@@ -1,0 +1,21 @@
+{
+  "name": "library",
+  "description": "Project with node and express",
+  "main": "app.js",
+  "authors": [
+    "Atans Dachenski"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.7",
+    "font-awesome": "~4.7.0"
+  }
+}
