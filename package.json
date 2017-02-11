@@ -10,12 +10,15 @@
   "author": "Atans Dachenski",
   "license": "MIT",
   "dependencies": {
+    "ejs": "^2.5.5",
     "express": "^4.14.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-inject": "^4.2.0",
     "gulp-jscs": "^4.0.0",
     "gulp-jshint": "^2.0.4",
+    "gulp-nodemon": "^2.2.1",
     "jshint": "^2.9.4",
     "jshint-stylish": "^2.2.1",
     "wiredep": "^4.0.0"
