@@ -3,21 +3,36 @@ var express = require('express');
 
 var port = process.env.PORT || 5000;
 var app = express();
+var  nav=[{
+    link:'/Books',
+    text:'Book'
+},{
+    link:'/Authors',
+    text:'Author'
+}];
+var bookRouter = require('./src/routes/bookRoutes.js')(nav);
 
 app.use(express.static('public'));
 app.set('views','./src/views');
 
 app.set('view engine','ejs');
 
+
+
 app.get('/',function(req, res){
     res.render('index',{
-        title:'Hello from index',
-        list:['a','b']});
+        title:'Index',
+        nav:[{
+            link:'/Books',
+            text:'Books'
+        },{
+            link:'/Authors',
+            text:'Authors'
+        }]
+    });
 });
 
-app.get('/books',function(req, res){
-    res.send('Hello from books');
-});
+app.use('/Books',bookRouter);
 
 app.listen(port,function(req, res){
     console.log('App is running on port: '+port);

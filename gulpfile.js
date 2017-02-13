@@ -3,7 +3,7 @@ var jsHint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
 var nodemon = require('gulp-nodemon');
 
-var jsFilers = ['*.js","src/**/*.js'];
+var jsFilers = ['*.js','src/**/*.js'];
 
 gulp.task('style', function () {
     return gulp.src(jsFilers)
@@ -27,25 +27,25 @@ gulp.task('inject',function(){
         ignorePath: '../../public'
     };
 
-    return gulp.src('./src/views/*.html')
+    return gulp.src('./src/views/*.ejs')
         .pipe(wiredep(options))
         .pipe(inject(injectSrc, injectOptions))
-        .pipe(gulp.dest('./src/views'))
+        .pipe(gulp.dest('./src/views'));
 });
 
 gulp.task('serve',['style','inject'],function(){
 
     var options = {
         script:"app.js",
-        delayTime:1,
+        delayTime: 1,
         env:{
             PORT:3000
         },
         watch: jsFilers
-    }
+    };
 
     return nodemon(options)
-        .on('restart', function(){
+        .on('restart', function(ev){
             console.log('Restarting...');
         });
 });
