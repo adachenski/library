@@ -36,7 +36,7 @@ gulp.task('inject',function(){
 gulp.task('serve',['style','inject'],function(){
 
     var options = {
-        script:"app.js",
+        script:'app.js',
         delayTime: 1,
         env:{
             PORT:3000
