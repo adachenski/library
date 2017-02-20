@@ -19,7 +19,11 @@ app.use(express.static('public'));
 app.use(bodyParser.json()); //creates req.body object for us
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(session({secret:'nasko'}));
+app.use(session({
+    secret:'nasko',
+    resave: true,
+    saveUninitialized: true
+}));
 require('./src/config/passport.js')(app);
 
 app.set('views','./src/views');
