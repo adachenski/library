@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var passport = require('passport');
 var cookieParser = require('cookie-parser'),
     session = require('express-session');
 
@@ -24,6 +25,8 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+
+
 require('./src/config/passport.js')(app);
 
 app.set('views','./src/views');

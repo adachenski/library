@@ -5,6 +5,13 @@ var express = require('express'),
 
 var router = function(nav){
 
+    bookRouter.use(function(req, res, next){
+        if(!req.user){
+            res.redirect('/');
+        }
+        next();
+    });
+
     bookRouter.route('/')
         .get(function(req, res){
 

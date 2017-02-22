@@ -4,8 +4,9 @@
 
 var express = require('express'),
     authRouter = express.Router(),
-    passport = require('passport'),
-    mongoDb = require('mongodb').MongoClient;
+    mongoDb = require('mongodb').MongoClient,
+    passport = require('passport');
+//require('../../src/config/passport')(passport);
 
 
 var router = function(){
@@ -17,7 +18,7 @@ var router = function(){
 
                 var collection = db.collection('user');
                 var user ={
-                    username: req.body.username,
+                    username: req.body.userName,
                     password: req.body.password
                 };
 
@@ -39,6 +40,12 @@ var router = function(){
         });
 
     authRouter.route('/profile')
+        .all(function(req, res, next){
+            if(!req.user){
+                res.redirect('/');
+            }
+            next();
+        })
         .get(function(req, res){
             res.json(req.user);
         });
