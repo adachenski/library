@@ -4,21 +4,18 @@ var express = require('express'),
     ObjectId = require('mongodb').ObjectID;
 
 var router = function(nav){
-var bookController = require('../controllers/bookController')(null,nav);
-    bookRouter.use(function(req, res, next){
-        if(!req.user){
-            res.redirect('/');
-        }
-        next();
-    });
+    var bookService = require('../services/goodreadsService')();
+    var bookController = require('../controllers/bookController')(bookService,nav);
 
-    bookRouter.route('/')
-        .get(bookController.getIndex);
+        bookRouter.use(bookController.middleware);
 
-    bookRouter.route('/:id')
-        .get(bookController.getById);
+        bookRouter.route('/')
+            .get(bookController.getIndex);
 
-    return bookRouter;
+        bookRouter.route('/:id')
+            .get(bookController.getById);
+
+        return bookRouter;
 
 };
 

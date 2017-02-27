@@ -6,12 +6,14 @@ var books =[
         title:'War and Peace',
         genre:'Historical Fiction',
         author:'Lev Nicolaevich Tolostoy',
+        bookId:656,
         read:false
     },
     {
-        title:'Planet of the apes',
-        genre:'Historical Fiction',
+        title:'Planet of the Apes',
+        genre:'Fiction',
         author:'Atanas Dachenski',
+        bookId:414895,
         read:false
     },
     {
